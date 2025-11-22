@@ -2,7 +2,14 @@ const http = require("http");
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/html" });
+  // Only serve the profile on the root path, otherwise return 404
+  if (req.url !== "/" && req.url !== "/index.html") {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.end("Not Found");
+    return;
+  }
+
+  res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
 
   const html = `
   <!DOCTYPE html>
@@ -125,7 +132,7 @@ const server = http.createServer((req, res) => {
       <div class="container">
           
           <div class="header">
-              <div class="profile-img"></div>
+              <div class="profile-img" aria-hidden="true"></div>
               <h1>Jean Paula G. Aquivido</h1>
               <h2>BSIT Student</h2>
           </div>
@@ -146,17 +153,17 @@ const server = http.createServer((req, res) => {
           </section>
 
           <section>
-              <div class="section-title">Favorite Quote:</div>
+              <div class="section-title">Favorite Quote</div>
               <p class="quote">
                   "Life and death are but a journey. When butterfly alights on the branch, what withers will bloom anew."  
-                  — Castorice :contentReference[oaicite:1]{index=1}
+                  — Castorice
               </p>
           </section>
 
           <section class="contact">
               <div class="section-title" style="text-align:center;">Contact</div>
-              <a href="#">📧</a>
-              <a href="#">📱</a>
+              <a href="mailto:you@example.com">📧</a>
+              <a href="tel:+639XXXXXXXXX">📱</a>
               <a href="#">🌐</a>
           </section>
 
@@ -170,5 +177,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(\`Server running on port \${PORT}\`);
+  console.log(`Server running on port ${PORT}`);
 });
