@@ -54,7 +54,7 @@ const server = http.createServer((req, res) => {
               border-radius: 50%;
               margin: auto;
               border: 6px solid #BFA7FF;
-              background-image: url('https://cdn-icons-png.flaticon.com/512/1946/1946429.png');
+              background-image: url('https://share.google/images/pz2p8RTpHOTy1u99W');
               background-size: cover;
               background-position: center;
               box-shadow: 0 0 20px #BFA7FF;
