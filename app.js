@@ -127,7 +127,7 @@ const server = http.createServer((req, res) => {
           <div class="header">
               <div class="profile-img"></div>
               <h1>Jean Paula G. Aquivido</h1>
-              <h2>BSIT Student • Web Developer • Designer</h2>
+              <h2>BSIT Student</h2>
           </div>
 
           <section>
@@ -146,22 +146,11 @@ const server = http.createServer((req, res) => {
           </section>
 
           <section>
-              <div class="section-title">Favorite Quote (Ayaka)</div>
+              <div class="section-title">Favorite Quote:</div>
               <p class="quote">
-                  "When the snow melts and the warm spring breeze blows, people will know that I have returned."  
-                  — Kamisato Ayaka
+                  "Life and death are but a journey. When butterfly alights on the branch, what withers will bloom anew."  
+                  — Castorice :contentReference[oaicite:1]{index=1}
               </p>
-          </section>
-
-          <section>
-              <div class="section-title">Skills</div>
-              <ul class="skills-list">
-                  <li>HTML / CSS / JavaScript</li>
-                  <li>Web Design</li>
-                  <li>Basic Node.js</li>
-                  <li>UI/UX Basics</li>
-                  <li>Team Collaboration</li>
-              </ul>
           </section>
 
           <section class="contact">
@@ -181,5 +170,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(\`Server running on port \${PORT}\`);
 });
