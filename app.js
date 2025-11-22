@@ -1,16 +1,19 @@
-const express = require("express");
-const app = express();
-const port = 3000;
+const http = require("http");
+const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-    res.send(`
-        <h2>Name: Aquivido, Jean Paula G.</h2>
-        <h3>Course & Section: BSIT 4102</h3>
-        <p><b>Inspirational Quote:</b></p>
-        <i>"The future belongs to those who believe in the beauty of their dreams."</i>
-    `);
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/html" });
+
+  const html = `
+    <h2>Name: Aquivido, Jean Paula G.</h2>
+    <h3>Course & Section: BSIT 4102</h3>
+    <p><b>Inspirational Quote:</b></p>
+    <i>"The future belongs to those who believe in the beauty of their dreams."</i>
+  `;
+
+  res.end(html);
 });
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
