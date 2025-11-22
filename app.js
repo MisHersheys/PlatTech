@@ -2,14 +2,7 @@ const http = require("http");
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
-  // Only serve the profile on the root path, otherwise return 404
-  if (req.url !== "/" && req.url !== "/index.html") {
-    res.writeHead(404, { "Content-Type": "text/plain" });
-    res.end("Not Found");
-    return;
-  }
-
-  res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+  res.writeHead(200, { "Content-Type": "text/html" });
 
   const html = `
   <!DOCTYPE html>
@@ -28,7 +21,7 @@ const server = http.createServer((req, res) => {
           }
 
           body {
-              background: linear-gradient(to bottom right, #a1c4fd, #c2e9fb);
+              background: linear-gradient(to bottom right, #1E1B2E, #6A4BC4);
               padding: 40px;
               display: flex;
               justify-content: center;
@@ -36,11 +29,13 @@ const server = http.createServer((req, res) => {
 
           .container {
               width: 800px;
-              background: white;
+              background: rgba(255, 255, 255, 0.12);
               padding: 30px;
               border-radius: 18px;
-              box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+              backdrop-filter: blur(12px);
+              box-shadow: 0 8px 25px rgba(0,0,0,0.4);
               animation: fadeIn 1s ease;
+              border: 1px solid rgba(255,255,255,0.25);
           }
 
           @keyframes fadeIn {
@@ -58,54 +53,48 @@ const server = http.createServer((req, res) => {
               height: 150px;
               border-radius: 50%;
               margin: auto;
-              border: 5px solid #74b9ff;
+              border: 6px solid #BFA7FF;
               background-image: url('https://cdn-icons-png.flaticon.com/512/1946/1946429.png');
               background-size: cover;
               background-position: center;
+              box-shadow: 0 0 20px #BFA7FF;
           }
 
           h1 {
               font-size: 32px;
               margin-top: 15px;
-              color: #2d3436;
+              color: #FFFFFF;
+              text-shadow: 0 0 10px rgba(255,255,255,0.4);
           }
 
           h2 {
               font-size: 20px;
-              color: #636e72;
-              margin-bottom: 20px;
-          }
-
-          section {
-              margin-top: 25px;
+              color: #E4D8FF;
+              margin-bottom: 15px;
           }
 
           .section-title {
               font-size: 22px;
               margin-bottom: 8px;
-              color: #0984e3;
-              border-left: 5px solid #0984e3;
+              color: #D7E8FF;
+              border-left: 5px solid #BFA7FF;
               padding-left: 10px;
               font-weight: bold;
           }
 
-          .about-text, .quote, .skills-list {
+          .about-text, .quote {
               font-size: 17px;
-              color: #2d3436;
+              color: #F0E9FF;
               line-height: 1.6;
               margin-top: 10px;
           }
 
-          .skills-list li {
-              margin-left: 18px;
-          }
-
           .quote {
               font-style: italic;
-              color: #444;
-              background: #f1f2f6;
+              background: rgba(255,255,255,0.1);
               padding: 12px;
               border-radius: 10px;
+              border: 1px solid rgba(255,255,255,0.25);
           }
 
           .contact {
@@ -117,12 +106,13 @@ const server = http.createServer((req, res) => {
               margin: 0 10px;
               font-size: 26px;
               text-decoration: none;
-              color: #0984e3;
+              color: #D7E8FF;
               transition: 0.3s;
           }
 
           .contact a:hover {
-              color: #6c5ce7;
+              color: #BFA7FF;
+              text-shadow: 0 0 10px #BFA7FF;
           }
       </style>
   </head>
@@ -132,7 +122,7 @@ const server = http.createServer((req, res) => {
       <div class="container">
           
           <div class="header">
-              <div class="profile-img" aria-hidden="true"></div>
+              <div class="profile-img"></div>
               <h1>Jean Paula G. Aquivido</h1>
               <h2>BSIT Student</h2>
           </div>
@@ -140,9 +130,9 @@ const server = http.createServer((req, res) => {
           <section>
               <div class="section-title">About Me</div>
               <p class="about-text">
-                  I am Jean Paula Aquivido, a BSIT student from section 4102. I enjoy learning new technologies, 
-                  creating websites, and building beautiful user interfaces. I am passionate about design, 
-                  coding, and improving my skills every day.
+                  I am Jean Paula Aquivido, a BSIT student from section 4102. I enjoy learning new 
+                  technologies, creating websites, and building beautiful user interfaces. I am passionate 
+                  about design, coding, and improving my skills every day.
               </p>
           </section>
 
@@ -153,17 +143,17 @@ const server = http.createServer((req, res) => {
           </section>
 
           <section>
-              <div class="section-title">Favorite Quote</div>
+              <div class="section-title">Favorite Quote:</div>
               <p class="quote">
-                  "Life and death are but a journey. When butterfly alights on the branch, what withers will bloom anew."  
+                  "Even in the quietest snowfall, destiny whispers — guiding those who dare to listen."  
                   — Castorice
               </p>
           </section>
 
           <section class="contact">
               <div class="section-title" style="text-align:center;">Contact</div>
-              <a href="mailto:you@example.com">📧</a>
-              <a href="tel:+639XXXXXXXXX">📱</a>
+              <a href="#">📧</a>
+              <a href="#">📱</a>
               <a href="#">🌐</a>
           </section>
 
