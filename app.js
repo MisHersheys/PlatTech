@@ -2,9 +2,9 @@ const http = require("http");
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/html" });
+    res.writeHead(200, { "Content-Type": "text/html" });
 
-  const html = `
+    const html = `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -19,24 +19,41 @@ const server = http.createServer((req, res) => {
               box-sizing: border-box;
               font-family: 'Poppins', sans-serif;
           }
+body {
+    position: relative;
+    background-image: url('https://upload-os-bbs.hoyolab.com/upload/2025/02/14/7912062/b69363436abc0d08e2019fd6a2b3c6b3_1594177979636235351.jpg?x-oss-process=image%2Fresize%2Cs_1920%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp%2Fquality%2Cq_80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
 
-          body {
-              background: linear-gradient(to bottom right, #1E1B2E, #6A4BC4);
-              padding: 40px;
-              display: flex;
-              justify-content: center;
-          }
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-size: cover;
+    background-position: center;
+    filter: blur(12px) brightness(0.7); /* stronger blur + slight darkening */
+    z-index: -1;
+}
 
-          .container {
-              width: 800px;
-              background: rgba(255, 255, 255, 0.12);
-              padding: 30px;
-              border-radius: 18px;
-              backdrop-filter: blur(12px);
-              box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-              animation: fadeIn 1s ease;
-              border: 1px solid rgba(255,255,255,0.25);
-          }
+.container {
+    width: 800px;
+    background: rgba(255, 255, 255, 0.15); /* slightly more transparent */
+    padding: 30px;
+    border-radius: 18px;
+    backdrop-filter: blur(20px); /* increase blur inside container */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    animation: fadeIn 1s ease;
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
 
           @keyframes fadeIn {
               from { opacity: 0; transform: translateY(20px); }
@@ -54,7 +71,7 @@ const server = http.createServer((req, res) => {
               border-radius: 50%;
               margin: auto;
               border: 6px solid #BFA7FF;
-              background-image: url('https://share.google/images/pz2p8RTpHOTy1u99W');
+              background-image: url('https://upload-os-bbs.hoyolab.com/upload/2025/02/14/7912062/b69363436abc0d08e2019fd6a2b3c6b3_1594177979636235351.jpg?x-oss-process=image%2Fresize%2Cs_1000%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp%2Fquality%2Cq_70');
               background-size: cover;
               background-position: center;
               box-shadow: 0 0 20px #BFA7FF;
@@ -163,9 +180,9 @@ const server = http.createServer((req, res) => {
   </html>
   `;
 
-  res.end(html);
+    res.end(html);
 });
 
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
