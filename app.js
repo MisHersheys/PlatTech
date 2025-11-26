@@ -39,7 +39,7 @@ body::before {
     background: inherit;
     background-size: cover;
     background-position: center;
-    filter: blur(12px) brightness(0.7); /* stronger blur + slight darkening */
+    filter: blur(20px) brightness(0.7); /* stronger blur + slight darkening */
     z-index: -1;
 }
 
